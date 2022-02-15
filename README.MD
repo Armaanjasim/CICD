@@ -2,7 +2,19 @@
 
 ![Jenkins](Jenkins.PNG)
 
-## Making A SSH Public Key
+## Table of Contents
+- [CI/CD With Jenkins & Amazon Web Service](#cicd-with-jenkins--amazon-web-service)
+  - [Table of Contents](#table-of-contents)
+- [Making A SSH Public Key](#making-a-ssh-public-key)
+  - [Blocker](#blocker)
+- [Jenkins](#jenkins)
+  - [Setting Up Github & Webhook](#setting-up-github--webhook)
+  - [Continuous Intergration](#continuous-intergration)
+    - [First Job](#first-job)
+    - [Second Job](#second-job)
+    - [Third Job](#third-job)
+
+# Making A SSH Public Key
 - Make sure you run gitbash as admin
 - `cd ~/.ssh`
 - `ssh-keygen -t rsa -b 4096 -C "yourgitemail@hotmail.co.uk"`
@@ -14,12 +26,14 @@
 - You can then create a new repository `CICD`
 - Once you create a new repository follow the steps on github of setting it up using the `ssh` link and not the `https`.
 
-### Blocker
-- When setting up the repository I kept getting access denied. I thought it was to do with my ssh key being copied wrong onto github however the issue was to do with my gitbash terminal not identify my email. The way I fixed this was by using the command `eval "$(ssh-agent -s)"` and then `ssh-add ~/.ssh/103a` and this added my email identity.
+## Blocker
+- When setting up the repository I kept getting access denied. I thought it was to do with my ssh key being copied wrong onto github however the issue was to do with my gitbash terminal not identify my email. The way I fixed this was by using the command `eval "$(ssh-agent -s)"` and then `ssh-add ~/.ssh/103a` and this added my email identity.  
+
+[Back](#table-of-contents)
 
 # Jenkins
 ## Setting Up Github & Webhook
-- Create a new repo with the app data inside and sycn it to your localhost.
+- Create a new repo with the app data inside and sync it to your localhost.
 - To do this we need to run this command in the ~/.ssh file path. `ssh-keygen -t ed25519 -C "yourgitemail@yourgitemail.com"` just like above but name the file something different for example `103a-jenkins`.
 - Then follow the steps above on how to add this ssh key onto github
 - Now to setup the webhook on the repository we have just created click on `settings` > `Webhooks` > `Add Webhook`
@@ -84,3 +98,5 @@ exit
 
 EOF
 ```
+
+[Back](#table-of-contents)
